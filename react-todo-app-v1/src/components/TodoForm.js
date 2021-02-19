@@ -5,22 +5,20 @@ const [input, setInput] = useState('')
 
 const handleChange = e => {
     setInput(e.target.value);
-};
+  };
 
-const handleSubmit = e => {
+  const handleSubmit = e => {
     e.preventDefault();
 
-    // props.onSubmit({
-    //     id: Math.floor(Math.random() * 10000),
-    //     text: input
-    // });
-
-   setInput(''); 
-
-};
+    props.onSubmit({
+      id: Math.floor(Math.random() * 10000),
+      text: input
+    });
+    setInput('');
+  };
 
     return (
-        <form className='todo-form' onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className='todo-form' >
             <input 
                 type='text' 
                 placeholder='Add a todo' 
@@ -29,7 +27,7 @@ const handleSubmit = e => {
                 className='todo-input'
                 onChange={handleChange}
             />
-            <button className='todo-button'>Add todo</button>
+            <button onClick={handleSubmit} className='todo-button'>Add todo</button>
         </form>
     )
 }
